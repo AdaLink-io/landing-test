@@ -1,0 +1,126 @@
+
+
+.outsideUnderConstructionWindow {
+    z-index: 2;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100vh;
+    /*background-color: rgba(0, 0, 0, 0.3);*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.underContructionWindow {
+    z-index: 2;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100vh;
+    /*background-color: rgba(0, 0, 0, 0.3);*/
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.underContructionWindow-Body {
+    
+    position: absolute;
+    padding: 32px;
+
+    max-width: 480px;
+    border-radius: 15px;
+    /*background-color: rgb(39, 30, 54);*/
+    /*border-color: rgb(63, 48, 85);*/
+    background-color: #141616;
+    /*background-color: rgb(190, 47, 47);*/
+    border-color: #323535;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+}
+
+
+.underContructionWindow-Body .close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    border-radius: 20px;
+    background-color: transparent;
+    border-style: none;
+    font-size: 18px;
+    color: rgb(235, 235, 235);
+}
+
+
+.underContructionWindow-Body .windowTitle {
+    position: relative;
+    margin: 5px;
+    text-align: center;
+    padding-bottom: 10px ;
+
+    color: rgb(235, 235, 235);
+}
+
+/*.horizontal-center {
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }*/
+
+  .underContructionWindow-Body .windowText{
+    position: relative;
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+
+.underContructionWindow-Body .windowImage{
+    
+  
+  width: 100%;
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  
+  
+}
+
+.underContructionWindow-Body .windowOKButton {
+  position: relative;
+  margin-top: 5%;
+  padding: 5px;
+  /*margin-right: 5px;*/
+  width: 50%;
+  max-width: 280px;
+  border-radius: 10px;
+  background-color: #beb5ff;
+  border-color: rgb(63, 48, 85);
+  border-style: solid;
+  border-width: 1px;
+  /*left: 50%;
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);*/
+  font-size: 18px;
+  font-weight:600;
+  color: black;
+}
+
+.underContructionWindow-Body .windowOKButton:hover{
+  background-color: #d3cff8;
+}

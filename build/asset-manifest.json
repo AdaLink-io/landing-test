@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.20d4f678.css",
+    "main.js": "/static/js/main.3a967dc1.js",
+    "static/media/cardanoSymbolBlack.png": "/static/media/cardanoSymbolBlack.c164c53a7d74c17c32f7.png",
+    "static/media/adalinkMedia1.jpg": "/static/media/adalinkMedia1.c4965ed9020e82153db4.jpg",
+    "static/media/adalinkMedia3.jpg": "/static/media/adalinkMedia3.ddf646f2f4b9cd2c88c5.jpg",
+    "static/media/adalinkMedia4.jpg": "/static/media/adalinkMedia4.22112f31716ccb716cb3.jpg",
+    "static/media/cardanoLogo.png": "/static/media/cardanoLogo.58b98619746420cc8825.png",
+    "static/media/catalystLogo.png": "/static/media/catalystLogo.5e05bea70275677972df.png",
+    "static/media/adalinkMedia2.jpg": "/static/media/adalinkMedia2.7f63d0731fd2cf413283.jpg",
+    "static/media/frenchieClubBanner.png": "/static/media/frenchieClubBanner.6f7142d10e7509103ad6.png",
+    "static/media/underConstruction.png": "/static/media/underConstruction.b7431126d4bf03813a66.png",
+    "static/media/dollar-refresh.svg": "/static/media/dollar-refresh.915d625f91950df6ddeade6eb496557f.svg",
+    "static/media/speaker.svg": "/static/media/speaker.92ec4d7dbf5311b57f4d9313596c5dc7.svg",
+    "index.html": "/index.html",
+    "static/media/search.svg": "/static/media/search.51a5307568c5ffb203a71257092aee23.svg",
+    "main.20d4f678.css.map": "/static/css/main.20d4f678.css.map",
+    "main.3a967dc1.js.map": "/static/js/main.3a967dc1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.20d4f678.css",
+    "static/js/main.3a967dc1.js"
+  ]
+}

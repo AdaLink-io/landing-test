@@ -1,0 +1,68 @@
+
+.what-adalink-extra-container{
+    margin: 4rem 2rem;
+    background: radial-gradient(rgb(210, 208, 208) 0%,white 75%);
+    padding-bottom: 2rem;
+}
+
+.what-adalink-extra-title{
+    text-align: center;
+    font-size: 34px;
+    margin-bottom: 1rem;
+    font-family: var(--title-font);
+}
+
+.what-adalink-extra-cards-container{
+    display: flex;
+    gap: 1rem;
+    
+    padding: 1rem;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+.what-adalink-extra-card-content{
+    display: flex;
+    flex-direction: column;
+    gap:0.6rem;
+    background: white;
+    padding: 1rem;
+    max-width: 370px;
+    min-height: 310px;
+    font-family: 'Inter';
+}
+
+.what-adalink-extra-card-banner {
+    /*width: 38px;*/
+    height: 3px;
+    background: var(--gradient-bar);
+    /*box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);*/
+}
+
+.what-adalink-extra-card-img-container img{
+    padding: 15px;
+    height: 60px;
+    text-align: left;
+    background: rgb(223, 240, 255);
+    border-radius: 30px;
+}
+
+.what-adalink-extra-card-title{
+    font-size: 20px;
+}
+
+.what-adalink-extra-card-text{
+    line-height: 1.5rem;
+}
+
+@media screen and (max-width: 700px) {
+    .what-adalink-extra-cards-container{
+        flex-direction: column;
+    }
+    .what-adalink-extra-card-content{
+        max-width: none;
+    }
+}

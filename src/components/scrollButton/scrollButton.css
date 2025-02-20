@@ -1,0 +1,48 @@
+
+/*
+h1
+text-align: center;
+color: green;
+`;
+
+export const Content = styled.div`
+overflowY: scroll;
+height: 2500px;
+`;
+
+export const Button = styled.div`
+position: fixed;
+width: 100%;
+left: 50%;
+bottom: 40px;
+height: 20px;
+font-size: 3rem;
+z-index: 1;
+cursor: pointer;
+color: green;
+`*/
+
+/*.scrollButton h1{
+    text-align: center;
+    color: green;
+}
+.scrollButton div{
+    overflow-y: scroll;
+    height: 2500px;
+}*/
+.scrollButton {
+    position: fixed;
+    width: 100%;
+    background: transparent;
+    border: none;
+
+    text-align: right;
+    padding-right: 3rem;
+    bottom: 40px;
+    height: 48px;
+    font-size: 3rem;
+    z-index: 1;
+    
+    color: var(--bright-blue);
+}
+
