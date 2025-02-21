@@ -47,4 +47,4 @@ jobs:
           source: "./*"
           rm: true
           strip_components: 1
-          args: "-C ./build"
+          args: "./build"
