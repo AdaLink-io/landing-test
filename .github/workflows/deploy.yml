@@ -44,4 +44,7 @@ jobs:
           key: ${{ secrets.CPANEL_KEY }}
           passphrase: ${{ secrets.CPANEL_KEY_PASSPHRASE }}
           target: ${{ secrets.CPANEL_TARGET }}
-          source: "./build/**"
+          source: "./*"
+          rm: true
+          strip_components: 1
+          args: "-C ./build"
