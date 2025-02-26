@@ -17,16 +17,11 @@ jobs:
         with:
           node-version: '22'
 
-      - name: "🧹 Clean remote directory"
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.CPANEL_SERVER }}
-          username: ${{ secrets.CPANEL_USERNAME }}
-          port: ${{ secrets.CPANEL_PORT }}
-          key: ${{ secrets.CPANEL_KEY }}
-          passphrase: ${{ secrets.CPANEL_KEY_PASSPHRASE }}
-          script: |
-            rm -rf ${{ secrets.CPANEL_TARGET }}/*
+      - name: "🧱 Install Tailwind CSS Dependencies"
+        run: |
+          npm install -D tailwindcss postcss autoprefixer
+          npx tailwindcss init -p
+          npm install
 
       - name: "🔨 Build Project"
         run: |
