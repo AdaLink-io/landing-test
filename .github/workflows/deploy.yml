@@ -20,8 +20,8 @@ jobs:
       - name: "🧱 Install Tailwind CSS Dependencies"
         run: |
           npm install -D tailwindcss postcss autoprefixer
-          npx tailwindcss init -p
           npm install
+          npx tailwindcss init -p
 
       - name: "🔨 Build Project"
         run: |
