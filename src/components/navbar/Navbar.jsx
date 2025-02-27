@@ -28,8 +28,8 @@ const Navbar = (props) => {
           <Menu setMiddleWindowTrigger={props.setMiddleWindowTrigger}/>
         </div>
       <div className='gpt3__navbar-sign'>
-        <p><a href="https://app-preview.adalink.io" target="_blank" rel="noopener noreferrer">Sign in</a></p>
-        <button type="button"><a href="https://app-preview.adalink.io" target="_blank" rel="noopener noreferrer">Sign up</a></button>
+        <p><a href="/app-preview" target="_blank" rel="noopener noreferrer">Sign in</a></p>
+        <button type="button"><a href="/app-preview" target="_blank" rel="noopener noreferrer">Sign up</a></button>
       </div>
       <div className='gpt3__navbar-menu'>
           {toggleMenu
