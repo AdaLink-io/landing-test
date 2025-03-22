@@ -29,8 +29,7 @@ jobs:
         with:
           host: ${{ secrets.CPANEL_SERVER }}
           username: ${{ secrets.CPANEL_USERNAME }}
-          port: 22
-          #port: ${{ secrets.CPANEL_PORT }}
+          port: ${{ secrets.CPANEL_PORT }}
           key: ${{ secrets.CPANEL_KEY }}
           passphrase: ${{ secrets.CPANEL_KEY_PASSPHRASE }}
           target: ${{ secrets.CPANEL_TARGET }}
