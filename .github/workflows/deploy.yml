@@ -5,17 +5,45 @@ on:
 name: "🚀 Deploy website on push"
 
 jobs:
-  web-deploy:
-    name: "🎉 Deploy"
+  security:
+    name: "🔒 Security Scan"
     runs-on: ubuntu-latest
     steps:
       - name: "🚚 Get latest code"
         uses: actions/checkout@v3
 
-      - name: "Use Node.js 22"
+      - name: "Use Node.js"
         uses: actions/setup-node@v4
         with:
-          node-version: '22'
+          node-version: '20'
+          cache: 'npm'
+
+      - name: "🔍 Run Security Audit"
+        run: |
+          npm install
+          npm audit
+        continue-on-error: true
+
+      - name: "🔍 Run Snyk Security Scan"
+        uses: snyk/actions/node@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
+  web-deploy:
+    name: "🎉 Deploy"
+    needs: security
+    runs-on: ubuntu-latest
+    steps:
+      - name: "🚚 Get latest code"
+        uses: actions/checkout@v3
+
+      - name: "Use Node.js"
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
 
       - name: "🔨 Build Project"
         run: |
@@ -23,14 +51,31 @@ jobs:
           npm run build
         env:
           CI: ""
+        continue-on-error: false
+
+      - name: "🔍 Test SSH Connection"
+        run: |
+          echo "Testing SSH connection to ${{ secrets.CPANEL_SERVER }}:21098"
+          echo "Creating temporary SSH key file..."
+          echo "${{ secrets.CPANEL_KEY }}" > /tmp/deploy_key
+          chmod 600 /tmp/deploy_key
+          echo "Attempting SSH connection..."
+          ssh -p 21098 -i /tmp/deploy_key -o StrictHostKeyChecking=no -o ConnectTimeout=10 -v ${{ secrets.CPANEL_USERNAME }}@${{ secrets.CPANEL_SERVER }} "echo 'SSH connection successful'"
+          rm -f /tmp/deploy_key
+        continue-on-error: true
 
       - name: "📂 Upload to Cpanel"
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.CPANEL_SERVER }}
           username: ${{ secrets.CPANEL_USERNAME }}
-          port: ${{ secrets.CPANEL_PORT }}
+          port: 21098
           key: ${{ secrets.CPANEL_KEY }}
           passphrase: ${{ secrets.CPANEL_KEY_PASSPHRASE }}
           target: ${{ secrets.CPANEL_TARGET }}
           source: "./build/*"
+          debug: true
+          timeout: 120s
+          command_timeout: 120s
+          strip_components: 1
+          rm: true
