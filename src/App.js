@@ -1,4 +1,6 @@
 import {React, useEffect, useState} from 'react'
+import SecurityErrorBoundary from './components/SecurityErrorBoundary';
+import './components/SecurityErrorBoundary.css';
 
 import { Footer, Blog, Possibility, Features, WhatGPT3, Header, FAQ, MiddleWindow} from './containers';
 import { CTA, Brand, Navbar,ScrollButton} from './components';
@@ -33,10 +35,11 @@ const App = () => {
   let middleWindowRef = useClickOutside(() => setMiddleWindowTrigger(false),"outsideMiddleWindow");
   
   return (
-    <div className='App'>
+    <SecurityErrorBoundary>
+      <div className='App'>
         <div >
-            <Navbar setMiddleWindowTrigger={setMiddleWindowTrigger}/>
-            <Header setMiddleWindowTrigger={setMiddleWindowTrigger} />
+          <Navbar setMiddleWindowTrigger={setMiddleWindowTrigger}/>
+          <Header setMiddleWindowTrigger={setMiddleWindowTrigger} />
         </div>
         
         <WhatGPT3 setMiddleWindowTrigger={setMiddleWindowTrigger}/>
@@ -65,13 +68,13 @@ const App = () => {
             </div>
             <div>
               <div className='what-adalink-extra-card-banner'></div>
-                <div className='what-adalink-extra-card-content'>
-                  <div className='what-adalink-extra-card-img-container'>
-                    <img src={dollarRefresh} alt={'dollar icon'}/>
-                  </div>
-                  <div className='what-adalink-extra-card-title'>Performance-Based Rewards</div>
-                  <div className='what-adalink-extra-card-text'>At AdaLink, rewards from pool margins or product sales are automatically distributed among affiliates based on their performance, ensuring fair compensation for all contributors.</div>
+              <div className='what-adalink-extra-card-content'>
+                <div className='what-adalink-extra-card-img-container'>
+                  <img src={dollarRefresh} alt={'dollar icon'}/>
                 </div>
+                <div className='what-adalink-extra-card-title'>Performance-Based Rewards</div>
+                <div className='what-adalink-extra-card-text'>At AdaLink, rewards from pool margins or product sales are automatically distributed among affiliates based on their performance, ensuring fair compensation for all contributors.</div>
+              </div>
             </div>
           </div>
         </div>
@@ -84,11 +87,10 @@ const App = () => {
         </div>
         <Footer />
         <MiddleWindow trigger={middleWindowTrigger} setTrigger={setMiddleWindowTrigger} ref={middleWindowRef}>
-          
         </MiddleWindow>
         <ScrollButton />
-
-    </div>
+      </div>
+    </SecurityErrorBoundary>
   )
 }
 

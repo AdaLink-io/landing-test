@@ -1,0 +1,34 @@
+.security-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  text-align: center;
+  background-color: #f8f9fa;
+}
+
+.security-error h2 {
+  color: #dc3545;
+  margin-bottom: 1rem;
+}
+
+.security-error p {
+  color: #6c757d;
+  margin-bottom: 2rem;
+}
+
+.security-error button {
+  padding: 0.75rem 1.5rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.security-error button:hover {
+  background-color: #0056b3;
+} 
