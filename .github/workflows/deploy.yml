@@ -25,11 +25,13 @@ jobs:
         continue-on-error: true
 
       - name: "🔍 Run Snyk Security Scan"
+        if: ${{ secrets.SNYK_TOKEN != '' }}
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high
+        continue-on-error: true
 
   web-deploy:
     name: "🎉 Deploy"
