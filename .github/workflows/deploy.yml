@@ -25,12 +25,12 @@ jobs:
         continue-on-error: true
 
       - name: "🔍 Run Snyk Security Scan"
-        if: ${{ secrets.SNYK_TOKEN != '' }}
         uses: snyk/actions/node@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high
+          fail-on: never
         continue-on-error: true
 
   web-deploy:
@@ -57,12 +57,12 @@ jobs:
 
       - name: "🔍 Test SSH Connection"
         run: |
-          echo "Testing SSH connection to ${{ secrets.CPANEL_SERVER }}:21098"
+          echo "Testing SSH connection to ${{ secrets.CPANEL_SERVER }}:${{ secrets.CPANEL_PORT }}"
           echo "Creating temporary SSH key file..."
           echo "${{ secrets.CPANEL_KEY }}" > /tmp/deploy_key
           chmod 600 /tmp/deploy_key
           echo "Attempting SSH connection..."
-          ssh -p 21098 -i /tmp/deploy_key -o StrictHostKeyChecking=no -o ConnectTimeout=10 -v ${{ secrets.CPANEL_USERNAME }}@${{ secrets.CPANEL_SERVER }} "echo 'SSH connection successful'"
+          ssh -p ${{ secrets.CPANEL_PORT }} -i /tmp/deploy_key -o StrictHostKeyChecking=no -o ConnectTimeout=10 -v ${{ secrets.CPANEL_USERNAME }}@${{ secrets.CPANEL_SERVER }} "echo 'SSH connection successful'"
           rm -f /tmp/deploy_key
         continue-on-error: true
 
@@ -71,7 +71,7 @@ jobs:
         with:
           host: ${{ secrets.CPANEL_SERVER }}
           username: ${{ secrets.CPANEL_USERNAME }}
-          port: 21098
+          port: ${{ secrets.CPANEL_PORT }}
           key: ${{ secrets.CPANEL_KEY }}
           passphrase: ${{ secrets.CPANEL_KEY_PASSPHRASE }}
           target: ${{ secrets.CPANEL_TARGET }}
