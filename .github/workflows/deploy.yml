@@ -20,7 +20,7 @@ jobs:
 
       - name: "🔍 Run Security Audit"
         run: |
-          npm install
+          npm ci
           npm audit
         continue-on-error: true
 
@@ -30,8 +30,12 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
           args: --severity-threshold=high
-          fail-on: never
         continue-on-error: true
+
+      - name: "🔍 Check for sensitive data"
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   web-deploy:
     name: "🎉 Deploy"
@@ -49,22 +53,11 @@ jobs:
 
       - name: "🔨 Build Project"
         run: |
-          npm install
+          npm ci
           npm run build
         env:
-          CI: ""
+          CI: "true"
         continue-on-error: false
-
-      - name: "🔍 Test SSH Connection"
-        run: |
-          echo "Testing SSH connection to ${{ secrets.CPANEL_SERVER }}:${{ secrets.CPANEL_PORT }}"
-          echo "Creating temporary SSH key file..."
-          echo "${{ secrets.CPANEL_KEY }}" > /tmp/deploy_key
-          chmod 600 /tmp/deploy_key
-          echo "Attempting SSH connection..."
-          ssh -p ${{ secrets.CPANEL_PORT }} -i /tmp/deploy_key -o StrictHostKeyChecking=no -o ConnectTimeout=10 -v ${{ secrets.CPANEL_USERNAME }}@${{ secrets.CPANEL_SERVER }} "echo 'SSH connection successful'"
-          rm -f /tmp/deploy_key
-        continue-on-error: true
 
       - name: "📂 Upload to Cpanel"
         uses: appleboy/scp-action@master
