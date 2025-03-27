@@ -23,9 +23,9 @@ export const validateURL = (url: string): boolean => {
       'player.vimeo.com',
       'fonts.googleapis.com',
       'fonts.gstatic.com',
-      'db.onlinewebfonts.com'
+      'db.onlinewebfonts.com',
     ];
-    return allowedDomains.some(domain => parsedUrl.hostname.endsWith(domain));
+    return allowedDomains.some((domain) => parsedUrl.hostname.endsWith(domain));
   } catch {
     return false;
   }
@@ -37,7 +37,7 @@ export const validateURL = (url: string): boolean => {
 export const generateSecureToken = (length: number = 32): string => {
   const array = new Uint8Array(length);
   crypto.getRandomValues(array);
-  return Array.from(array, byte => byte.toString(16).padStart(2, '0')).join('');
+  return Array.from(array, (byte) => byte.toString(16).padStart(2, '0')).join('');
 };
 
 /**
@@ -55,4 +55,4 @@ export const sanitizeUserInput = (input: string): string => {
     .replace(/[<>]/g, '') // Remove potential HTML tags
     .trim()
     .slice(0, 1000); // Limit input length
-}; 
+};

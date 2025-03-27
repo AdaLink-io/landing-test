@@ -13,7 +13,7 @@ interface State {
 class SecurityErrorBoundary extends Component<Props, State> {
   public state: State = {
     hasError: false,
-    error: null
+    error: null,
   };
 
   public static getDerivedStateFromError(error: Error): State {
@@ -27,14 +27,14 @@ class SecurityErrorBoundary extends Component<Props, State> {
 
   public render() {
     if (this.state.hasError) {
-      return this.props.fallback || (
-        <div className="security-error">
-          <h2>Something went wrong</h2>
-          <p>We've detected a potential security issue. Please try refreshing the page.</p>
-          <button onClick={() => window.location.reload()}>
-            Refresh Page
-          </button>
-        </div>
+      return (
+        this.props.fallback || (
+          <div className="security-error">
+            <h2>Something went wrong</h2>
+            <p>We've detected a potential security issue. Please try refreshing the page.</p>
+            <button onClick={() => window.location.reload()}>Refresh Page</button>
+          </div>
+        )
       );
     }
 
@@ -42,4 +42,4 @@ class SecurityErrorBoundary extends Component<Props, State> {
   }
 }
 
-export default SecurityErrorBoundary; 
+export default SecurityErrorBoundary;

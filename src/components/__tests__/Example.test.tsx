@@ -7,4 +7,4 @@ describe('Example Test', () => {
     render(<div>Test Component</div>);
     expect(screen.getByText('Test Component')).toBeInTheDocument();
   });
-}); 
+});
